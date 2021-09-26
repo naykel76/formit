@@ -7,7 +7,7 @@
 layouts using columns. This seems a little convoluted an easliy could be placed
 on the WTF pile, but it works! --}}
 
-@if(!$adv)<div class="frm-row {{ $rowClasses }}"> @endif
+<?= !$adv ? "<div class='frm-row {{ $rowClasses }}'>" : '' ?>
 
     @isset($label)
         <label @isset($required) {{ "class=req" }} @endisset for="{{ $for }}">{{ $label }}</label>
@@ -36,4 +36,4 @@ on the WTF pile, but it works! --}}
         <div class="txt-red fullwidth tar" role="alert"> {{ $message }} </div>
     @enderror
 
-    @if(!$adv)</div> @endif
+    <?= !$adv ? "</div>" : '' ?>

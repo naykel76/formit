@@ -1,24 +1,28 @@
-{{---------------------------------------------------------------------------
-    Textarea component
----------------------------------------------------------------------------}}
+@props([
+    'for' => null,
+    'value' => null,
+    'label' => null,
+    'adv' => false,
+    'helpText' => null,
+    'required' => false,
+    'rowClasses' => null
+    ])
 
-<div class="frm-row {{ $rowClasses }}">
+
+<?= !$adv ? "<div class='frm-row $rowClasses'>" : '' ?>
 
     @isset($label)
-        <label @isset($required) {{ "class=req" }} @endisset for="{{ $for }}">{{ $label }}</label>
+        <label {{ $required ? "class='required'" : '' }} for="{{ $for }}">{{ $label }}</label>
     @endisset
 
     @isset($helpText)
         <div class="help"> <small>{{ $helpText }}</small> </div>
     @endisset
 
-    <textarea rows="4" cols="50"
-        name="{{ $for }}" {{ $attributes }}
-        {{ $errors->has( $for ) ? "class=bdr-red" : null }}
-    >{{  old($for) ? old($for) : ($value)  }}</textarea>
+    <textarea rows="4" cols="50" name="{{ $for }}" id="{{ $for }}" {{ $errors->has( $for ) ? "class=bdr-red" : null }} {{ $attributes }} >{{ old($for) ? old($for) : ($value) }}</textarea>
 
     @error($for)
-        <div class="txt-red fullwidth tar" role="alert"> {{ $message }} </div>
+        <div class="txt-red" role="alert"> {{ $message }} </div>
     @enderror
 
-</div>
+<?= !$adv ? "</div>" : '' ?>

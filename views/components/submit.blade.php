@@ -1,12 +1,8 @@
-{{---------------------------------------------------------------------------
-    Submit Buttom Component
+@props(['label' => 'Submit', 'adv' => false, 'default' => true, 'rowClasses' => null])
 
-    $label is for the button text
----------------------------------------------------------------------------}}
+<?= !$adv ? "<div class='frm-row $rowClasses'>" : '' ?>
 
-<div class="frm-row {{ $rowClasses }}">
+    <button type="submit" {{ $attributes->merge(['class' => 'btn' . ($default ? ' primary' : null)]) }}> {{ $label }} </button>
 
-    <button type="submit" class="{{ $classes }}"> {{ $label }} </button>
-
-</div>
+<?= !$adv ? "</div>" : '' ?>
 

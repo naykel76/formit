@@ -13,6 +13,8 @@ Form components package including WYSIWYG editor for NayKel Laravel applications
   - [Install the package via composer:](#install-the-package-via-composer)
   - [Publish required assets:](#publish-required-assets)
   - [Publish optional assets:](#publish-optional-assets)
+- [Common Attributes](#common-attributes)
+  - [Submit](#submit)
 - [Change log](#change-log)
 
 ## Installation and Configuration
@@ -32,6 +34,41 @@ Form components package including WYSIWYG editor for NayKel Laravel applications
 ### Publish optional assets:
 
     php artisan vendor:publish --tag=formit-opt
+
+
+
+## Common Attributes
+
+Form controls by default are wrapped inside a `.frm-row`.
+
+| Attribute  | Default | Description                              |
+| ---------- | ------- | ---------------------------------------- |
+| for        | `null`  |                                          |
+| value      | `null`  |                                          |
+| label      | `null`  | Leave blank to remove label              |
+| adv        | `false` | Remove `.frm-row` for custom layouts     |
+| helpText   | `null`  |                                          |
+| required   | `true`  |                                          |
+| rowClasses | `null`  | Add additional classes to the `.frm-row` |
+
+
+### Submit
+
+Accepts standard HTML attributes including `class`
+
+| Attribute  | Default | Description                                      |
+| ---------- | ------- | ------------------------------------------------ |
+| label      | `null`  | Leave blank for default "Submit"                 |
+| default    | `true`  | Select to use the default 'primary' button style |
+| adv        | `false` | Remove `.frm-row` for custom layouts             |
+| rowClasses | `null`  | Add additional classes to the `.frm-row`         |
+
+```html
+<x-formit::submit />
+<x-formit::submit label="Other Label" />
+<x-formit::submit :default=false />
+<x-formit::submit :default=false class="success" />
+```
 
 
 

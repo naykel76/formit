@@ -1,41 +1,62 @@
-{{---------------------------------------------------------------------------
-    File input component with help text
----------------------------------------------------------------------------}}
+@props([
+    'for' => null,
+    'value' => null,
+    'label' => 'Select File',
+    'adv' => false,
+    'helpText' => null,
+    'rowClasses' => null
+    ])
 
-{{-- Conditionally render the 'frm-row'. This makes it easer to create complex
-layouts using columns. This seems a little convoluted and could easliy be placed
-on the WTF pile, but it works! --}}
-
-
-@if (!$adv)<div class="frm-row {{ $rowClasses }}"> @endif
+    {{-- show icon --}}
+    {{-- do i need name? --}}
+    <?= !$adv ? "<div class='frm-row {{ $rowClasses }}'>" : '' ?>
 
     @isset($helpText)
         <div class="help"> <small>{{ $helpText }}</small> </div>
     @endisset
 
-    <div class="btn file">
+    {{-- <input type="file" id="uploaded_file" accept="image/*" /> --}}
 
-        <input type="file" name="{{ $for }}" accept="image/*" />
+    {{-- <label for="uploaded_file" class="btn">heyhey</label> --}}
+
+    <input type="file" id="uploadedFile" name="uploadedFile" accept="image/*" />
+
+    <label for="uploadedFile" class="btn">heyhey</label>
+
+
+    {{-- <div class="btn file">
+
 
         <svg class="icon">
-           <use xlink:href="/svg/nk_icon-defs.svg#icon-upload"></use>
+            <use xlink:href="/svg/naykel-ui-SVG-sprite.svg#upload"></use>
         </svg>
 
         <span class="file-label">
-            @isset($label)
+@isset($label)
                 <span class="file-label">{{ $label }}</span>
-            @endisset
-        </span>
+@endisset
+</span>
 
-    </div>
-{{--
-    <input name="{{ $for }}"
-        {{ $errors->has( $for ) ? "class=bdr-red" : null }}
-        {{ $attributes->merge(['type' => 'text']) }}
-        value="{{ old($for) ? old($for) : ($value) }}" /> --}}
+</div> --}}
+{{-- <div class="btn file">
 
-    @error($for)
-        <div class="txt-red fullwidth tar" role="alert"> {{ $message }} </div>
-    @enderror
+        <input type="file" name="{{ $for }}" accept="image/*" />
 
-@if (!$adv)</div> @endif
+<svg class="icon">
+    <use xlink:href="/svg/naykel-ui-SVG-sprite.svg#upload"></use>
+</svg>
+
+<span class="file-label">
+    @isset($label)
+        <span class="file-label">{{ $label }}</span>
+    @endisset
+</span>
+
+</div> --}}
+
+
+@error($for)
+    <div class="txt-red fullwidth tar" role="alert"> {{ $message }} </div>
+@enderror
+
+<?= !$adv ? "</div>" : '' ?>

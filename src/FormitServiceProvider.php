@@ -19,7 +19,7 @@ class FormitServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        $this->loadViewsFrom(__DIR__ . '/../views', 'formit');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'formit');
 
         $this->loadViewComponentsAs('formit', [
             Checkbox::class,
@@ -29,11 +29,11 @@ class FormitServiceProvider extends ServiceProvider
         ]);
 
         // publish assets to public directory
-        $this->publishes(
-            [
-                __DIR__ . '/vendor/ckeditor/' => public_path('vendor/ckeditor/'),
-            ],
-            'nkr'
-        );
+        // $this->publishes(
+        //     [
+        //         __DIR__ . '/vendor/ckeditor/' => public_path('vendor/ckeditor/'),
+        //     ],
+        //     'nkr'
+        // );
     }
 }

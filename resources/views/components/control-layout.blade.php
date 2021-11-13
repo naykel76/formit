@@ -1,15 +1,15 @@
-@props([
+@aware([
     'for' => null,
     'value' => null,
     'label' => null,
-    'adv' => false,
     'helpText' => null,
     'required' => false,
-    'rowClasses' => null
+    'rowClasses' => null,
+    'inline' => false,
+    'icon' => null,
     ])
 
-
-<?= !$adv ? "<div class='frm-row $rowClasses'>" : '' ?>
+@if(!$inline)  <div class='frm-row {{ $icon ? 'with-icon' : '' }} {{ $rowClasses }}'> @endif
 
     @isset($label)
         <label {{ $required ? "class='required'" : '' }} for="{{ $for }}">{{ $label }}</label>
@@ -19,10 +19,10 @@
         <div class="help"> <small>{{ $helpText }}</small> </div>
     @endisset
 
-    <input name="{{ $for }}" id="{{ $for }}" {{ $errors->has( $for ) ? "class=bdr-red" : null }} {{ $attributes->merge(['type' => 'text']) }} value="{{ old($for) ? old($for) : ($value) }}" />
+    {{ $slot }}
 
     @error($for)
         <div class="txt-red" role="alert"> {{ $message }} </div>
     @enderror
 
-<?= !$adv ? "</div>" : '' ?>
+@if(!$inline) </div> @endif

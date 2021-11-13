@@ -8,6 +8,7 @@
     'rowClasses' => null
     ])
 
+{{-- DO NOT ADD ROW AND COLUMNS HERE UNLESS THEY CAN BE OVERRIDDEN --}}
 
 <?= !$adv ? "<div class='frm-row $rowClasses'>" : '' ?>
 
@@ -19,7 +20,7 @@
         <div class="help"> <small>{{ $helpText }}</small> </div>
     @endisset
 
-    <textarea rows="4" cols="50" name="{{ $for }}" id="{{ $for }}" {{ $errors->has( $for ) ? "class=bdr-red" : null }} {{ $attributes }} >{{ old($for) ? old($for) : ($value) }}</textarea>
+    <textarea name="{{ $for }}" id="{{ $for }}" {{ $errors->has( $for ) ? "class=bdr-red" : null }} {{ $attributes }} >{{ old($for) ? old($for) : ($value) }}</textarea>
 
     @error($for)
         <div class="txt-red" role="alert"> {{ $message }} </div>

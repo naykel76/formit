@@ -3,14 +3,14 @@
 ---------------------------------------------------------------------------}}
 
 {{-- add script to head --}}
-@section('head')
+@push('head')
     <script src="/vendor/ckeditor/ckeditor.js"></script>
     <style>
         div#cke_1_contents{
             height: 100vh;
         }
     </style>
-@endsection
+@endpush
 
 <div class="frm-row {{ $rowClasses }}">
 

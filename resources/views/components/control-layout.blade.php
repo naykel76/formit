@@ -19,7 +19,18 @@
         <div class="help"> <small>{{ $helpText }}</small> </div>
     @endisset
 
-    {{ $slot }}
+    @if($icon)
+
+        <div class="with-icon">
+            {{ $slot }}
+            <x:gotime::icon icon="{{ $icon }}" />
+        </div>
+
+        @else
+
+        {{ $slot }}
+
+    @endif
 
     @error($for)
         <div class="txt-red" role="alert"> {{ $message }} </div>

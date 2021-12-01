@@ -1,8 +1,12 @@
-@props(['label' => 'Submit', 'adv' => false, 'default' => true, 'rowClasses' => null])
+@props([
+    'default' => true,
+    'text' => null,
+    'inline' => false,
+    'rowClasses' => null,
+    ])
 
-<?= !$adv ? "<div class='frm-row $rowClasses'>" : '' ?>
+    @if(!$inline)  <div class='frm-row tar {{ $rowClasses }}'> @endif
 
-    <button type="submit" {{ $attributes->merge(['class' => 'btn' . ($default ? ' primary' : null)]) }}> {{ $label }} </button>
+        <button type="submit" {{ $attributes->merge(['class' => 'btn' . ($default ? ' primary' : null)]) }}> {{ $text }} </button>
 
-<?= !$adv ? "</div>" : '' ?>
-
+        @if(!$inline) </div> @endif
